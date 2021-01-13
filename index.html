@@ -36,7 +36,7 @@ h1 {
 }
 
 h2 {
-    font-size:90px;
+   /* font-size:90px;*/
 
 }
 
@@ -97,9 +97,11 @@ body {
 }
 
 h2#strawberry {
-    
+    font-size: 130px;
+    position:fixed;
   /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 2px;
+  right:43%; /*space for border */
   /*-webkit-text-stroke-color: green;*/
 }
   
@@ -173,28 +175,33 @@ newspaper = document.querySelector("h2#strawberry");
   //some condiitons redundant
     //if(media.src) {
       if(e.keyCode == 32) { 
-       runSpeechRecognition();
-       // loadFont();
+       //runSpeechRecognition();
+       loadFont();
       }
     }
 
   /* window.onpopstate=function(){ alert("Back/Forward clicked!"); } */
  
     function loadFont()  {
+       //Math.floor(Math.random() * (max - min + 1) + min);
        // strawberry.style.color = "red";
         const r = Math.floor(Math.random() * 256);
         const g = Math.floor(Math.random() * 256);
         const b = Math.floor(Math.random() * 256);
-        const a = Math.random() // 0.0 to 1.0 
 
+        const a = Math.random() // 0.0 to 1.0 
+        const p = Math.floor(Math.random() * 43) + 1; //1 to 43
+        const s = Math.floor(Math.random() * (130 - 16 + 1) + 16); //16 to 130
         const d = Math.floor(Math.random() * 10);
-       // -webkit-text-stroke-width: 1px;
+       //-webkit-text-stroke-width: 1px;
  
         strawberry.style["letter-spacing"] = d + "px";//negative? dafault none.
-        strawberry.style.color = "rgb(" + r + "," + g + "," + b + ")" ;
+        strawberry.style.color = "rgb(" + r + "," + g + "," + b + "," + a + ")" ;
         strawberry.style["-webkit-text-stroke-width"]  = d + "px";
-        console.log( strawberry.style["-webkit-text-stroke-width"]);
-        strawberry.style["-webkit-text-stroke-color"] ="rgb(" + r + "," + g + "," + b + "," + a + ")" ;
+        strawberry.style.right = p + "%"; 
+        strawberry.style.fontSize = s + "px";
+        console.log(strawberry.style["-webkit-text-stroke-width"]);
+        strawberry.style["-webkit-text-stroke-color"] ="rgb(" + r + "," + g + "," + b + ")" ;
         console.log(strawberry.style.color);
         console.log("strawberry cheesecake");
 
@@ -236,10 +243,15 @@ newspaper = document.querySelector("h2#strawberry");
     var transcript = event.results[0][0].transcript;
     console.log("transcript: " + transcript);
     console.log("confidence: " + confidence * 100 + '%');
-    document.getElementById("strawberry").textContent = transcript;
     
+    
+    /*test without */
     const choosedFont = loadRandomFont(fontsList);
     updateFont(el, choosedFont);
+
+
+    document.getElementById("strawberry").textContent = transcript;
+
    // transcript = transcript.toUpperCase(); 
 
     //checkAnswer(transcript, gum);
