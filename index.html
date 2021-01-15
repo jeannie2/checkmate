@@ -178,12 +178,25 @@ newspaper = document.querySelector("h2#strawberry");
        runSpeechRecognition();
        //loadFont();
       }
+      else if(e.keyCode == 13) {
+          createBubble();
+      }
     }
 
   /* window.onpopstate=function(){ alert("Back/Forward clicked!"); } */
  
- //function 
+ function createBubble() {
+    var strawberry = document.createElement('div');
+    document.body.appendChild(strawberry);
+    strawberry.textContent = "u don't say"
+    //div.id = "strawberry";
+ }
 
+function randomNumber() {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+}
     function loadFont()  {
        //Math.floor(Math.random() * (max - min + 1) + min);
        // strawberry.style.color = "red";
@@ -203,7 +216,7 @@ newspaper = document.querySelector("h2#strawberry");
         strawberry.style.right = p + "%"; 
         strawberry.style.fontSize = s + "px";
         console.log(strawberry.style["-webkit-text-stroke-width"]);
-        strawberry.style["-webkit-text-stroke-color"] ="rgb(" + r + "," + g + "," + b + ")" ;
+        strawberry.style["-webkit-text-stroke-color"] ="rgb(" + x + "," + y + "," + z + ")" ;
         console.log(strawberry.style.color);
         console.log("strawberry cheesecake");
 
@@ -228,6 +241,8 @@ newspaper = document.querySelector("h2#strawberry");
       //document.querySelector("p#info").textContent = "listening";
     } 
 
+    recognition.start();
+
     recognition.onspeechend = function() {
       recognition.stop();
       console.log("stopped listening"); 
@@ -236,7 +251,7 @@ newspaper = document.querySelector("h2#strawberry");
     }
   }
 
-  recognition.start();
+  //recognition.start();
 
   const el = newspaper; //works?
 
