@@ -1,11 +1,9 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<!DOCTYPE html> 
 <html> 
 <head> 
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
-    <title>Using jParallax to create own interactive e-card | Script Tutorials</title>
-    <meta name="author" content="Script Tutorials" />
+    <title>Speech Bubbles</title>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap" rel="stylesheet">
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -14,9 +12,7 @@
 </head> 
 
 <style>
-html,
-body,
-.container {
+html,body, .container {
     height: 100%;
 }
 
@@ -37,13 +33,13 @@ h1 {
 
 h2 {
    /* font-size:90px;*/
-
 }
 
 body {
     margin: 0;
-    background-image:url("homemaker.jpeg");
-    text-align:center;
+    background:white;
+    /*background-image:url("homemaker.jpeg");*/
+    /*text-align:center; commented out*/
 }
 
 .container {
@@ -82,7 +78,6 @@ body {
   position: relative;
 }
 
-
 .sb4:before {
   content: "";
   width: 0px;
@@ -96,32 +91,119 @@ body {
   bottom: -19px;
 }
 
-h2#strawberry {
+#strawberry { /*h2#strawberry*/
     font-size: 130px;
     position:fixed;
   /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 2px;
   right:43%; /*space for border */
   /*-webkit-text-stroke-color: green;*/
+  border:2px solid pink;
 }
+
+svg {
+ border:2px solid green;
+}
+
+path {
+    border:2px solid green;
+}
+
+#alice {
+   /* height: 100px;
+    width: 200px; */
+    border: 3px solid red;
+    border-radius: 50%;
+}
+
+#cookie {
+    border: 10px solid green;
+}
+
+#vanilla {
+    border:1px solid black;
+}
+
+#tuna {
+    border:2px solid black;
+    position: absolute;
+     display:block;
+     /*visibility: hidden;*/
+    height: auto;
+    width: auto;
+}
+
+/*
+svg#cow {
+    fill:url(#pattern4);
+}
+*/
+/*
+.brownie {
+    fill: url(#pattern);
+}*/
   
 </style>
 
 <body> 
+<div id="tuna">leaping salmon in the water eeyieeyiyo</div>
 
-    <h1><span>SUPERNOVA</span></h1>
+<!--set styles https://stackoverflow.com/questions/54081437/how-to-dynamically-create-svg-text-elements-using-js -->
+<!--viewBox="0 0 132 136"-->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 136" style="fill:red" preserveAspectRatio="xMidYMid meet" width="200" height="200">
+            <defs>
+            <style>
+          
+                path { 
+                    background-color:red !important;
+                    stroke: #000;
+                    stroke-width: 4;
+                    stroke-linejoin: bevel;
+                    vector-effect: non-scaling-stroke;
+                    fill: url(#pattern4);
+                }
+            </style>
 
-      <!--  <div class="box sb4">I'm speech bubble</div>-->
+            <pattern id="pattern4" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+        <circle id="napkin" cx="8" cy="8" r="2" style="stroke: none; fill: #0000ff" /> <!--r:3-->
+                <!--z-index: text-->
+
+            </defs> 
+            <text id="dalmation" style = "z-index: 1" x="50%" y="50%" text-anchor="middle" stroke="#51c5cf" fill-opacity="0.5" font-size="25px" stroke-width="2px" alignment-baseline="before-edge" stroke-width="2px" stroke-opacity="0.5" dy=".3em"> Pow! lorum </text>
+           <!--- <text x="20" y="35" class="small">My feet</text> -->
+            <path  d="M66.1 1.5C30.4 1.5 1.5 22.9 1.5 46c0 18.1 17.9 33.5 42.8 39.3 1.5 14.8-1.3 39-8.5 48.1 10.8-12.5 22.4-33.6 26.6-45.7 1.2 0 2.5.1 3.7.1 35.7 0 64.6-18.7 64.6-41.8S101.8 1.5 66.1 1.5zM35.8 133.4c-.3.4-.7.8-1 1.1.4-.3.7-.7 1-1.1z"/>
+           
+        </svg>
+
+
+        <svg width="500" height="150">
+                <defs>
+                    <pattern id="pattern4" x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse" >
+            
+                    <circle cx="10" cy="10" r="10" style="stroke: none; fill: #0000ff" />
+            
+                    </pattern>
+                    
+                </defs>
+                
+                <rect x="10" y="10" width="100" height="100"
+                      style="stroke: #000000; fill: url(#pattern4);" />
+            </svg>
+            
+    <!--<h1><span>SUPERNOVA</span></h1>-->
+
+    <!-- <div class="box sb4">I'm speech bubble</div>-->
 
       <!----
     <div class="container">
         <div id="icecream" class="box">Random Google Font</div>
     </div>-->
-
    
-   <h2 id="strawberry">Pow!</h2>
+  <h2 id="strawberry">POw</h2> 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <div id="alice"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
 
 <script>
 
@@ -134,33 +216,25 @@ if ('speechSynthesis' in window) { //initialise gameOver, speaking in global sco
   var speaking = synth.speaking;
   var speaking = false;
 
-  /*var words = [ 'bang' , 'pow' , 'boom', 'kersplat', 'pop'];
-  var speechRecognitionList = new SpeechGrammarList();
+/*var words = [ 'bang' , 'pow' , 'boom', 'kersplat', 'pop'];
+var speechRecognitionList = new SpeechGrammarList();
 speechRecognitionList.addFromString(grammar, 1);
 recognition.grammars = speechRecognitionList;
 */
 
-  //recognition.maxAlternatives = 1;?
+//recognition.maxAlternatives = 1;?
 
   var recognition = new SpeechRecognition();
   recognition.lang = 'en-US';
-  //added:
-  /*
-  recognition.continuous = true; 
-  recognition.interimResults = true; 
-*/
 
-recognition.continuous = false; 
-recognition.interimResults = true; 
+recognition.continuous = false; //default:false. true
+recognition.interimResults = false;  //default:false. true
 
 newspaper = document.querySelector("h2#strawberry");
 
-  /*var qs;
-  var gum;*/
   //var results = document.getElementById("results"); //easier
   //var sound = document.getElementById("sound"); 
   //var listening = false;
-
 
   window.onunload = function () { 
     window.speechSynthesis.cancel(); 
@@ -174,55 +248,145 @@ newspaper = document.querySelector("h2#strawberry");
   document.body.onkeyup = function(e) { //order matters. if gameover last condition: when gameover and continue press spacebar, prints "message showing" rather than "game Over" when continue press spacebar
   //some condiitons redundant
     //if(media.src) {
-      if(e.keyCode == 32) { 
-       runSpeechRecognition();
-       //loadFont();
+      if(e.keyCode == 32) {  //spacebar
+          //runSpeechRecognition();
+          loadFont(strawberry);
       }
-      else if(e.keyCode == 13) {
-          createBubble();
+      else if(e.keyCode == 13) { //return
+
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+
+          createText();
+          document.getElementById("napkin").style="stroke: none; fill:" +"rgb(" + r + "," + g + "," + b + ")";
+          document.getElementById("napkin").setAttribute("r", 10 ); 
+          document.getElementById("pattern4").setAttribute("width",30 );
+          document.getElementById("pattern4").setAttribute("height",30 );
+          document.getElementById("dalmation").setAttribute("fill", "rgb(" + r + "," + g + "," + b + ")" );
+          //document.getElementById("pattern4")="50"; //how properties?
       }
     }
 
   /* window.onpopstate=function(){ alert("Back/Forward clicked!"); } */
  
- function createBubble() {
-    var strawberry = document.createElement('div');
-    document.body.appendChild(strawberry);
-    strawberry.textContent = "u don't say"
-    //div.id = "strawberry";
- }
+//Math.floor(Math.random() * (qs-1) - min + 1) + min);
+//document.getElementById("fox").style.pattern;
 
+ function createText() {
+    var strawberry = document.createElement('p');
+    loadFont(strawberry);
+    document.body.appendChild(strawberry);
+
+    var height = (strawberry.clientHeight + 1) + "px"
+    var width = (strawberry.clientWidth + 1) + "px"
+    console.log("after append: height:" + height  + " width: " + width );
+
+//return r,g,b,a
+}
+
+strawberry.textContent = "u don't say";
+    
+    //()
+    /*
+    setTimeout(function(){
+        console.log("mr potato");
+        //styles not applying?
+        //var strawberry = document.querySelector("h2#strawberry");
+        strawberry.parentNode.removeChild(strawberry);
+         }, 3000);
+*/
+
+    //div.id = "strawberry";
+
+/*
 function randomNumber() {
         const r = Math.floor(Math.random() * 256);
         const g = Math.floor(Math.random() * 256);
         const b = Math.floor(Math.random() * 256);
 }
-    function loadFont()  {
+*/
+    function loadFont(strawberry)  {
        //Math.floor(Math.random() * (max - min + 1) + min);
        // strawberry.style.color = "red";
         const r = Math.floor(Math.random() * 256);
         const g = Math.floor(Math.random() * 256);
         const b = Math.floor(Math.random() * 256);
 
-        const a = Math.random() // 0.0 to 1.0 
-        const p = Math.floor(Math.random() * 43) + 1; //1 to 43
-        const s = Math.floor(Math.random() * (130 - 16 + 1) + 16); //16 to 130
-        const d = Math.floor(Math.random() * 10);
+        const a = Math.random(); // 0.0 to 1.0 
+        //const p = 15;
+        const t = Math.floor(Math.random() * (70 - 55 + 1) + 55); //65;
+        const p = Math.floor(Math.random() * 20) + 1; //1 to 43
+        const s = Math.floor(Math.random() * (100 - 16 + 1) + 16); //Math.floor(Math.random() * (130 - 16 + 1) + 16); //16 to 130
+        const d = Math.floor(Math.random() * 7); //10
        //-webkit-text-stroke-width: 1px;
  
+       strawberry.style.border = "2px solid pink"
+       strawberry.textContent = "Pow";
+       strawberry.style.position = "fixed";//inline-block not sure about
+       // strawberry.style.right="43%";
         strawberry.style["letter-spacing"] = d + "px";//negative? dafault none.
-        strawberry.style.color = "rgb(" + r + "," + g + "," + b + "," + a + ")" ;
+        strawberry.style.color = "rgba(" + r + "," + g + "," + b + "," + a + ")" ;
         strawberry.style["-webkit-text-stroke-width"]  = d + "px";
         strawberry.style.right = p + "%"; 
+        strawberry.style.top = t + "%";
+        console.log("right:" + strawberry.style.right)
         strawberry.style.fontSize = s + "px";
         console.log(strawberry.style["-webkit-text-stroke-width"]);
-        strawberry.style["-webkit-text-stroke-color"] ="rgb(" + x + "," + y + "," + z + ")" ;
+        strawberry.style["-webkit-text-stroke-color"] ="rgb(" + r + "," + g + "," + b + ")" ;
         console.log(strawberry.style.color);
         console.log("strawberry cheesecake");
+        //document.body.appendChild(strawberry);
 
         strawberry.style.fontFamily = fontsArray[Math.floor(Math.random() * fontsArray.length)];
-        console.log(strawberry.style.fontFamily)
+        console.log(strawberry.style.fontFamily);
+
        // newspaper.style.color = //random color or fixed? 
+     
+     createBubble(strawberry);
+
+    function createBubble(strawberry) {
+    //calcualte p dimensions. global?
+    //var fontSize = 30;
+    //var tuna = document.getElementById("tuna");
+    //tuna.style.fontSize = fontSize;
+   var height = (strawberry.clientHeight + 1) + "px"
+   var width = (strawberry.clientWidth + 1) + "px"
+
+   const w = Math.floor(Math.random() * 11); 
+
+   const r = Math.floor(Math.random() * 256);
+   const g = Math.floor(Math.random() * 256);
+   const b = Math.floor(Math.random() * 256);
+   const a = Math.random(); // 0.0 to 1.0 
+/*
+var vanilla = document.createElement('div');
+document.body.appendChild(vanilla);
+vanilla.id="vanilla";
+vanilla.style.height= height;
+vanilla.style.width= width;
+  */
+    //make bubble
+    var ellipse = document.createElement('div');
+    ellipse.style.width = (strawberry.clientWidth + 1) + "px";
+    ellipse.style.height = (strawberry.clientHeight + 1) + "px";
+    console.log("height:" + height + " width: " + width);
+    //ellipse.id="cookie";
+    ellipse.style.borderRadius="50%";
+    ellipse.style.border = w + "px solid yellow"; //random size and color
+    ellipse.style.position = "fixed";
+    // strawberry.style.color = "rgba(" + r + "," + g + "," + b + "," + a + ")" ;
+    ellipse.style.right = p + "%"; 
+    ellipse.style.top = t + "%";
+    console.log("right:" + ellipse.style.right);
+
+    document.body.appendChild(ellipse);
+
+    ellipse.style.background = "rgb(" + r + "," + g + "," + b + "," + a + ")" ;
+    ellipse.style.zIndex = "-1";
+    
+    //return r,g,b,a
+}
     }
 
   var fontsArray = [
@@ -237,8 +401,6 @@ function randomNumber() {
   function runSpeechRecognition() {
     recognition.onstart=function() {
       console.log("listening...");
-      //document.querySelector("p#info").style.display = block;
-      //document.querySelector("p#info").textContent = "listening";
     } 
 
     recognition.start();
@@ -246,8 +408,6 @@ function randomNumber() {
     recognition.onspeechend = function() {
       recognition.stop();
       console.log("stopped listening"); 
-      //document.querySelector("p#info").style.display = block;
-      //document.querySelector("p#info").textContent = "stopped listening";
     }
   }
 
@@ -260,7 +420,6 @@ function randomNumber() {
     var transcript = event.results[0][0].transcript;
     console.log("transcript: " + transcript);
     console.log("confidence: " + confidence * 100 + '%');
-    
     
     /*test without */
     const choosedFont = loadRandomFont(fontsList);
@@ -325,13 +484,11 @@ function loadRandomFont(fontsList) {
     return choosedFont;
 }
 
-
 function updateFont(el, choosedFont) {
     el = newspaper; 
     el.style.fontFamily = choosedFont;
     el.setAttribute('title', choosedFont);
 }
-
 
 async function main() {
     fontsList = await loadFontsList();
@@ -341,9 +498,7 @@ async function main() {
 
 main();
 
-} 
-
-else { 
+} else { 
     console.log("Speech recognition not supported");
 } 
 
